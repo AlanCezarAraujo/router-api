@@ -1,0 +1,37 @@
+{
+  "name": "router",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "start": "NODE_ENV=production node dist/src/index.js",
+    "start:dev": "nodemon -w src -e . --exec 'tsc && SWCRC=true node --inspect -r @swc-node/register src/index.ts | pino-pretty -c -t'",
+    "build": "swc src -d dist",
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:unit": "vitest run --dir test/unit",
+    "test:integration": "vitest run --dir test/integration",
+    "lint": "tsc && eslint src test"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1",
+    "openai": "^4.67.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "@swc-node/register": "^1.10.9",
+    "@swc/cli": "^0.4.1-nightly.20240914",
+    "@swc/core": "^1.7.26",
+    "chokidar": "^4.0.1",
+    "eslint": "^9.11.1",
+    "globals": "^15.9.0",
+    "nodemon": "^3.1.7",
+    "pino-pretty": "^11.2.2",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.7.0",
+    "vitest": "^2.1.1"
+  }
+}
