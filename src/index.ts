@@ -52,7 +52,7 @@ fastify.post('/', async function handler (request, reply) {
   return
 })
 
-fastify.listen({ port: 3000 })
+fastify.listen({ port: 3000, host: '0.0.0.0' })
   .then((address) => console.log(`server listening on ${address}`))
   .catch((err) => {
     console.error('Error starting server:', err)
