@@ -58,7 +58,9 @@ fastify.post('/send-message', async function handler (request, reply) {
   console.info('Request recebido no /send-message:', JSON.stringify(request.body, null, 2))
   console.log('')
 
-  const { numberId, message } = request.body as IEvolutionPayload
+  const { data } = request.body as any
+  const { key, message } = data as IEvolutionPayload
+  const numberId = key.remoteJid.split('@')[0]
 
   await sendMessageTo360Dialog(numberId, message.conversation)
 
