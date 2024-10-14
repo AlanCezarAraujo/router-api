@@ -1,6 +1,7 @@
 import Fastify from 'fastify'
 import { sendToEvolutionApi } from './evolution-api/evolution.service'
-import { MessageTypeEnum } from './evolution-api/evolution.model'
+import { IEvolutionPayload, MessageTypeEnum } from './evolution-api/evolution.model'
+import { sendMessageTo360Dialog } from './360-dialog/360dialog.service'
 
 const fastify = Fastify({
   logger: true
@@ -43,11 +44,25 @@ fastify.post('/', async function handler (request, reply) {
         conversation: entryPayload[0].changes[0].value.messages[0].text.body,
     },
     messageType: MessageTypeEnum.Conversation,
-  }
+  } as IEvolutionPayload
 
   await sendToEvolutionApi(evolutionPayload)
 
   reply.status(200).send({ message: 'Message received' })
+
+  return
+})
+
+fastify.post('/send-message', async function handler (request, reply) {
+  console.log('')
+  console.info('Request recebido no /send-message:', JSON.stringify(request.body, null, 2))
+  console.log('')
+
+  const { numberId, message } = request.body as IEvolutionPayload
+
+  await sendMessageTo360Dialog(numberId, message.conversation)
+
+  reply.status(200).send({ message: 'Message sent' })
 
   return
 })
