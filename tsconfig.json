@@ -14,7 +14,7 @@
       "lib": [
         "es2020"
       ],
-      "baseUrl": ".",
+      "baseUrl": "./",
       "forceConsistentCasingInFileNames": true,
       "esModuleInterop": true,
       "experimentalDecorators": true,
@@ -22,12 +22,7 @@
       "moduleResolution": "Node",
       "skipLibCheck": true,
       "paths": {
-        "@routes/*": [
-          "./src/routes/*"
-        ],
-        "@middlewares/*": [
-          "./src/middlewares/*"
-        ]
+        "@*": ["./src/*"],
       }
     },
     "include": [

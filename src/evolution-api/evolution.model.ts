@@ -32,3 +32,20 @@ export interface IEvolutionPayload {
     // Tipo da mensagem
     messageType: MessageTypeEnum,
 }
+
+export interface IEvolutionInstance {
+    // Nome da instância que você está criando
+    instanceName: string,
+
+    // Token opcional para autenticar a instância
+    token?: string,
+
+    // Number ID da instância que será utilizado para receber e enviar mensagens
+    number: "",
+
+    // Defina como false pois a integração não requer QR Code
+    qrcode: false,
+
+    // Use "EVOLUTION" para especificar que esta integração é com o canal universal Evolution
+    integration: 'EVOLUTION'    
+}
