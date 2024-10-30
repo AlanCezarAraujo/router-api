@@ -20,17 +20,17 @@ fastify.post('/', async function handler (request, reply) {
 
   const entryPayload: any = (request.body as any).entry;
 
-  if (!entryPayload[0].changes[0].value.contacts) {
+  console.log('')
+  console.info('ROUTER • Request received:', JSON.stringify(entryPayload, null, 2))
+  console.log('')
+
+  if (!entryPayload || !entryPayload[0]?.changes[0]?.value?.contacts) {
     console.warn('No contacts found')
 
     reply.status(404).send({ message: 'No contacts found' })
 
     return
   }
-
-  console.log('')
-  console.info('Request received:', JSON.stringify(entryPayload, null, 2))
-  console.log('')
 
   const evolutionPayload = {
     numberId: entryPayload[0].changes[0].value.metadata.display_phone_number,
@@ -55,7 +55,7 @@ fastify.post('/', async function handler (request, reply) {
 
 fastify.post('/send-message', async function handler (request, reply) {
   console.log('')
-  console.info('Request recebido no /send-message:', JSON.stringify(request.body, null, 2))
+  console.info('ROUTER • Request recebido no /send-message:', JSON.stringify(request.body, null, 2))
   console.log('')
 
   const { data } = request.body as any
