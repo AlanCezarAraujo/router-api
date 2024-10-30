@@ -12,19 +12,21 @@ fastify.get('/', async function handler (request, reply) {
 })
 
 fastify.post('/', async function handler (request, reply) {
-  if ((request.body as any).event === 'webhook-test-event') {
-    reply.status(200).send({ message: 'Webhook test event received' })
+  console.log('')
+  console.info('ROUTER • Request received:', JSON.stringify(request.body, null, 2))
+  console.log('')
 
-    return
+  if ((request.body as any).event === 'webhook-test-event') {
+    return reply.status(200).send({ message: 'Webhook test event received' })
+  }
+
+  if ((request.body as any).statuses) {
+    return reply.status(200)
   }
 
   const entryPayload: any = (request.body as any).entry;
   const contacts: any = (request.body as any).contacts;
   const messages: any = (request.body as any).messages;
-
-  console.log('')
-  console.info('ROUTER • Request received:', JSON.stringify(entryPayload, null, 2))
-  console.log('')
 
   if (!entryPayload || !entryPayload[0]?.changes[0]?.value?.contacts) {
     console.warn('No contacts or entry found [maybe On Primise account/request]')

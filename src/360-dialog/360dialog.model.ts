@@ -57,3 +57,17 @@ export type CloudMessages = {
         body: string,
     },
 }
+
+export type StatusesPayload = {
+    statuses: [
+      {
+        id: string,
+        message: {
+          recipient_id: string
+        },
+        status: string,
+        timestamp: string,
+        type: string
+      }
+    ]
+}
