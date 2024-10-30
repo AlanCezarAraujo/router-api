@@ -1,6 +1,6 @@
 import Fastify from 'fastify'
-import { sendToEvolutionApi } from './evolution-api/evolution.service'
-import { IEvolutionPayload, MessageTypeEnum } from './evolution-api/evolution.model'
+import { sendToEvolutionApi, setEvolutionPayload } from './evolution-api/evolution.service'
+import { IEvolutionPayload } from './evolution-api/evolution.model'
 import { sendMessageTo360Dialog } from './360-dialog/360dialog.service'
 
 const fastify = Fastify({
@@ -19,32 +19,33 @@ fastify.post('/', async function handler (request, reply) {
   }
 
   const entryPayload: any = (request.body as any).entry;
+  const contacts: any = (request.body as any).contacts;
+  const messages: any = (request.body as any).messages;
 
   console.log('')
   console.info('ROUTER • Request received:', JSON.stringify(entryPayload, null, 2))
   console.log('')
 
   if (!entryPayload || !entryPayload[0]?.changes[0]?.value?.contacts) {
-    console.warn('No contacts found')
+    console.warn('No contacts or entry found [maybe On Primise account/request]')
 
     reply.status(404).send({ message: 'No contacts found' })
 
     return
   }
 
-  const evolutionPayload = {
-    numberId: entryPayload[0].changes[0].value.metadata.display_phone_number,
-    key: {
-      remoteJid: entryPayload[0].changes[0].value.contacts[0].wa_id,
-      fromMe: false,
-      id: entryPayload.id,
-    },
-    pushName: entryPayload[0].changes[0].value.contacts[0].profile.name,
-    message: {
-        conversation: entryPayload[0].changes[0].value.messages[0].text.body,
-    },
-    messageType: MessageTypeEnum.Conversation,
-  } as IEvolutionPayload
+  const evolutionPayload = setEvolutionPayload(entryPayload, contacts, messages)
+
+  if (!evolutionPayload) {
+    console.log('')
+    console.warn('ROUTER • Could not process request')
+    console.warn(JSON.stringify(request.body, null, 2))
+    console.log('')
+
+    reply.status(404).send({ message: 'No contacts or messages found' })
+
+    return
+  }
 
   await sendToEvolutionApi(evolutionPayload)
 
