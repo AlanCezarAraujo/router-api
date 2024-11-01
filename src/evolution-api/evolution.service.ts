@@ -46,15 +46,29 @@ export function setEvolutionPayload(entry: CloudEntry[], contacts: OnPremiseCont
 }
 
 export async function sendToEvolutionApi(evolutionPayload: IEvolutionPayload) {
-    const response = await fetch('https://api.netip.com.br/webhook/evolution', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(evolutionPayload),
-    })
+    console.log('')
+    console.info('ROUTER • Sending to Evolution API:', JSON.stringify(evolutionPayload, null, 2))
+    console.log('')
+
+    let response = null
     
-    const data = await response.json();
+    try {
+      response = await fetch('https://api.netip.com.br/webhook/evolution', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(evolutionPayload),
+      })
+    } catch (error) {
+      console.log('')
+      console.error('ROUTER • Error sending to Evolution API:', error)
+      console.log('')
+
+      return null
+    }
+    
+    const data = await response?.json();
 
     return data;
 }
