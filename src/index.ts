@@ -16,6 +16,10 @@ fastify.post('/', async function handler (request, reply) {
   console.info('ROUTER • Request received:', JSON.stringify(request.body, null, 2))
   console.log('')
 
+  if (!request.body) {
+    return reply.status(200).send({ message: 'Empty body' })
+  }
+
   if ((request.body as any).event === 'webhook-test-event') {
     return reply.status(200).send({ message: 'Webhook test event received' })
   }
