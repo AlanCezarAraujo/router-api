@@ -29,7 +29,7 @@ fastify.post('/', async function handler (request, reply) {
   const messages: any = (request.body as any).messages;
 
   if (!entryPayload || !entryPayload[0]?.changes[0]?.value?.contacts) {
-    console.warn('No contacts or entry found [maybe On Primise account/request]')
+    console.warn('No contacts or entry found [maybe On Premise account/request]')
 
     reply.status(404).send({ message: 'No contacts found' })
 

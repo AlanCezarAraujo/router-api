@@ -3,7 +3,7 @@ import { IEvolutionPayload, MessageTypeEnum } from "./evolution.model";
 
 export function setEvolutionPayload(entry: CloudEntry[], contacts: OnPremiseContact[], messages: OnPremiseMessages[]): IEvolutionPayload | undefined {
   if (!entry || !entry[0]?.changes[0]?.value?.contacts) {
-    console.warn('No contacts or entry found [maybe On Primise account/request]')
+    console.warn('No contacts or entry found [maybe On Premise account/request]')
   }
 
   if (!contacts || !messages) {
