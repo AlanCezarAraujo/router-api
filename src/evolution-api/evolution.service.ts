@@ -1,7 +1,7 @@
 import { CloudEntry, OnPremiseContact, OnPremiseMessages } from "src/360-dialog/360dialog.model";
 import { IEvolutionPayload, MessageTypeEnum } from "./evolution.model";
 
-export function setEvolutionPayload(entry: CloudEntry[], contacts: OnPremiseContact[], messages: OnPremiseMessages[]): IEvolutionPayload | undefined {
+export function setEvolutionPayload(numberId: string, entry: CloudEntry[], contacts: OnPremiseContact[], messages: OnPremiseMessages[]): IEvolutionPayload | undefined {
   if (!entry || !entry[0]?.changes[0]?.value?.contacts) {
     console.warn('No contacts or entry found [maybe On Premise account/request]')
   }
@@ -14,7 +14,8 @@ export function setEvolutionPayload(entry: CloudEntry[], contacts: OnPremiseCont
 
   if (entry) {
     const evolutionPayload = {
-      numberId: '5511996508606', // entry[0].changes[0].value.metadata.display_phone_number,
+      numberId, // entry[0].changes[0].value.metadata.display_phone_number,
+      token: 'BB270D0E17D7-4A17-AF19-534639FD982A',
       key: {
         remoteJid: entry[0].changes[0].value.contacts[0].wa_id,
         fromMe: false,
@@ -31,7 +32,8 @@ export function setEvolutionPayload(entry: CloudEntry[], contacts: OnPremiseCont
   }
 
   return {
-    numberId: '5511996508606', // contacts[0].wa_id,
+    numberId, // contacts[0].wa_id,
+    token: 'BB270D0E17D7-4A17-AF19-534639FD982A',
     key: {
       remoteJid: contacts[0].wa_id,
       fromMe: false,
