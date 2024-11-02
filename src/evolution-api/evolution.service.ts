@@ -14,7 +14,7 @@ export function setEvolutionPayload(entry: CloudEntry[], contacts: OnPremiseCont
 
   if (entry) {
     const evolutionPayload = {
-      numberId: entry[0].changes[0].value.metadata.display_phone_number,
+      numberId: '5511996508606', // entry[0].changes[0].value.metadata.display_phone_number,
       key: {
         remoteJid: entry[0].changes[0].value.contacts[0].wa_id,
         fromMe: false,
@@ -31,7 +31,7 @@ export function setEvolutionPayload(entry: CloudEntry[], contacts: OnPremiseCont
   }
 
   return {
-    numberId: contacts[0].wa_id,
+    numberId: '5511996508606', // contacts[0].wa_id,
     key: {
       remoteJid: contacts[0].wa_id,
       fromMe: false,
