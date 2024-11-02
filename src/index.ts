@@ -131,6 +131,10 @@ fastify.post('/send-message', async function handler (request, reply) {
     return
   }
 
+  console.log('')
+  console.info('ROUTER • Mensagem enviada pela 360Dialog:', JSON.stringify(data, null, 2))
+  console.log('')
+
   reply.status(200).send({ message: 'Message sent' })
 
   return
