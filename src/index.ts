@@ -120,9 +120,15 @@ fastify.post('/send-message', async function handler (request, reply) {
   const { data } = request.body as any
   const { key, message } = data as IEvolutionPayload
   const numberId = key.remoteJid.split('@')[0]
+  let response = null
 
   try {
-    await sendMessageTo360Dialog(numberId, message.conversation)
+    response = await sendMessageTo360Dialog(numberId, message.conversation)
+    response = await response.json()
+
+    console.log('')
+    console.info('ROUTER • Resposta da 360Dialog:', JSON.stringify(response, null, 2))
+    console.log('')
   } catch (error) {
     console.error('ROUTER • Error sending message to 360Dialog:', error)
 
