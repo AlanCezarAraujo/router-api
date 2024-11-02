@@ -1,5 +1,5 @@
-export function sendMessageTo360Dialog(phoneNumber: string, message: string): void {
-    fetch('https://waba-sandbox.360dialog.io/v1/messages', {
+export async function sendMessageTo360Dialog(phoneNumber: string, message: string) {
+    return fetch('https://waba-sandbox.360dialog.io/v1/messages', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
