@@ -5,7 +5,7 @@ export async function sendMessageTo360Dialog(phoneNumber: string, message: strin
           'Content-Type': 'application/json',
 
           // TODO: Pegar a API Key do Sandbox de acordo com o número cadastrado
-          'D360-API-KEY': 'LtmN6p_sandbox',
+          'D360-API-KEY': '6F21itBcq2bOFK9WYcvujDU6AK',
         },
         body: JSON.stringify({
             "messaging_product": "whatsapp",
