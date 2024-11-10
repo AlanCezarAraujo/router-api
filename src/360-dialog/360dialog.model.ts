@@ -22,8 +22,10 @@ export type CloudEntry = {
     changes: [
         {
             value: {
+                messaging_product: "whatsapp" | string,
                 metadata: {
                     display_phone_number: string,
+                    phone_number_id: string,
                 },
                 contacts: [
                     {
@@ -35,12 +37,25 @@ export type CloudEntry = {
                 ],
                 messages: [
                     {
-                        text: {
+                        // Phone Number
+                        from: string,
+
+                        // Example: wamid.HBgNNTUxMTk4NDM3OTkwNhUCABIYIEFDMTIxNkZFNzREMTg4M0E4M0NFODZDRDc5Nzk0QkM5AA==
+                        id: string,
+
+                        type: 'image' | string,
+                        image?: {
+                            id: string,
+                            mime_type: string,
+                            sha256: string,
+                        },
+                        text?: {
                             body: string,
                         },
                     },
                 ],
             },
+            field: 'messages' | string,
         }
     ],
 }
@@ -53,7 +68,19 @@ export type CloudContacts = {
 }
 
 export type CloudMessages = {
-    text: {
+    // Phone Number
+    from: string,
+
+    // Example: wamid.HBgNNTUxMTk4NDM3OTkwNhUCABIYIEFDMTIxNkZFNzREMTg4M0E4M0NFODZDRDc5Nzk0QkM5AA==
+    id: string,
+
+    type: 'image' | string,
+    image?: {
+        id: string,
+        mime_type: string,
+        sha256: string,
+    },
+    text?: {
         body: string,
     },
 }

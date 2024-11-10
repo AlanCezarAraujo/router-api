@@ -1,3 +1,34 @@
+// "audioMessage"
+// "viewOnceMessageV2"
+// "stickerMessage"
+// "ephemeralMessage"
+// "liveLocationMessage"
+// "interactiveMessage"
+// "orderMessage"
+// "pollCreationMessageV3"
+// "encReactionMessage"
+// "editedMessage"
+// "viewOnceMessageV2Extension"
+// "ptvMessage"
+// "conversation"
+// "extendedTextMessage"
+// "documentMessage"
+// "contactMessage"
+// "groupInviteMessage"
+// "videoMessage"
+// "contactsArrayMessage"
+// "buttonsMessage"
+// "imageMessage"
+// "protocolMessage"
+// "documentWithCaptionMessage"
+// "buttonsResponseMessage"
+// "unknown"
+// "reactionMessage"
+// "listMessage"
+// "locationMessage"
+// "pinInChatMessage"
+// "templateMessage"
+// "productMessage"
 export enum MessageTypeEnum {
     Conversation = 'conversation',
     ImageMessage = 'imageMessage',
@@ -30,5 +61,13 @@ export interface IEvolutionPayload {
     },
 
     // Tipo da mensagem
+    messageType: MessageTypeEnum,
+}
+
+export interface IEvolutionMediaPayload {
+    token: string,
+    numberId: string,
+    mediatype: 'image' | 'audio' | 'video',
+    media: string,
     messageType: MessageTypeEnum,
 }
