@@ -126,7 +126,7 @@ fastify.post<{ Params: { numberId: string } }>('/:numberId', async function hand
       token: '39882bc13b5e520f417cf8acf7c2c4a2001', // 'BB270D0E17D7-4A17-AF19-534639FD982A',
       message: {
         mediaType: 'image',
-        media: 'http://minio.i4ai.com.br/api/v1/download-shared-object/aHR0cHM6Ly9zMy5pNGFpLmNvbS5ici9yb3V0ZXIvNTUxMTk4NDM3OTkwNi0wN2UzM2UwZS0zYjdjLTRkYmEtOGU3ZS00M2I2ZGNmMTkxYWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1YVkRIWDdISklBSjBLUUdCOTBZMiUyRjIwMjQxMTEwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTExMFQyMzEzMTJaJlgtQW16LUV4cGlyZXM9NDMyMDAmWC1BbXotU2VjdXJpdHktVG9rZW49ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmhZMk5sYzNOTFpYa2lPaUpZVmtSSVdEZElTa2xCU2pCTFVVZENPVEJaTWlJc0ltVjRjQ0k2TVRjek1UTXlNelV4Tml3aWNHRnlaVzUwSWpvaVlXUnRhVzRpZlEuaTBDWDdLRmZveEJpaUxiNy1JOVFiYnFGZXVld3Z4eXRhcXIyd3NfTnM2ajhqcVJMV1oxbE1FSlFRNXVFMTY1bXpMT3hXRWhvaTBxWUVuTkxXcDZPbWcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnZlcnNpb25JZD1udWxsJlgtQW16LVNpZ25hdHVyZT0zNGJmMmI3OGY0NGFiYTAyMDgyMGU4OWQzMjA2MDM5MmQ1ZTA5OWEwNTQ0ZmYxZjI2MGQ1ZDViODlmNzQ0MTlk' //url,
+        media: 'https://s3.i4ai.com.br/evolution/evolution-api/682fec52-556b-432a-9654-9e90ccb245cc/5524998155174%40s.whatsapp.net/imageMessage/A64E179FEBE4E30EBB0FF920596F4638.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=1IS4rz3JGlBV0uuQYfAb%2F20241110%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20241110T233758Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=872dbed0f14e8ec922dedc65777d62d90a7f64333d9c2497ab6b3a6661fa106f' //url,
       },
       messageType: MessageTypeEnum.ImageMessage,
     });
