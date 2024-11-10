@@ -55,8 +55,8 @@ export async function sendToEvolutionApi(evolutionPayload: IEvolutionPayload) {
     let response = null
     
     try {
-      // response = await fetch('https://api.netip.com.br/webhook/evolution', {
-      response = await fetch('https://api02.netip.com.br/webhook/evolution', {
+      response = await fetch('https://api.netip.com.br/webhook/evolution', {
+      // response = await fetch('https://api02.netip.com.br/webhook/evolution', {
       // response = await fetch('https://localhost:8080/webhook/evolution', {
           method: 'POST',
           headers: {
@@ -85,8 +85,8 @@ export async function sendMediaToEvolutionApi(payload: any) {
     let response = null
     
     try {
-      // response = await fetch('https://api.netip.com.br/webhook/evolution', {
-      response = await fetch('https://api02.netip.com.br/webhook/evolution', {
+      response = await fetch('https://api.netip.com.br/webhook/evolution', {
+      // response = await fetch('https://api02.netip.com.br/webhook/evolution', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
