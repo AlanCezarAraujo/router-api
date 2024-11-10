@@ -1,5 +1,5 @@
 import Fastify from 'fastify'
-import * as Minio from 'minio'
+// import * as Minio from 'minio'
 import { sendMediaToEvolutionApi, sendToEvolutionApi, setEvolutionPayload } from './evolution-api/evolution.service'
 import { IEvolutionPayload, MessageTypeEnum } from './evolution-api/evolution.model'
 import {
@@ -12,36 +12,36 @@ const fastify = Fastify({
   logger: true
 })
 
-const minioClient = new Minio.Client({
-  endPoint: 's3.i4ai.com.br',
-  useSSL: true,
-  accessKey: '1IS4rz3JGlBV0uuQYfAb',
-  secretKey: 'YLVI6tBIrF5pVukAnOpxhe8eysb84UAk4VuMFMgB',
-});
+// const minioClient = new Minio.Client({
+//   endPoint: 's3.i4ai.com.br',
+//   useSSL: true,
+//   accessKey: '1IS4rz3JGlBV0uuQYfAb',
+//   secretKey: 'YLVI6tBIrF5pVukAnOpxhe8eysb84UAk4VuMFMgB',
+// });
 
-async function uploadToMinIO(bucketName: string, objectName: string, buffer: Buffer, mediaType: string) {
-  try {
-    const bucketExists = await minioClient.bucketExists('router');
+// async function uploadToMinIO(bucketName: string, objectName: string, buffer: Buffer, mediaType: string) {
+//   try {
+//     const bucketExists = await minioClient.bucketExists('router');
 
-    if (!bucketExists) {
-      await minioClient.makeBucket('router', 'us-east-1');
-    }
+//     if (!bucketExists) {
+//       await minioClient.makeBucket('router', 'us-east-1');
+//     }
 
-    await minioClient.putObject('router', bucketName + '-' + objectName, buffer, buffer.length, {
-      'Content-Type': mediaType,
-    });
+//     await minioClient.putObject('router', bucketName + '-' + objectName, buffer, buffer.length, {
+//       'Content-Type': mediaType,
+//     });
 
-    console.log('')
-    console.log('ROUTER • Arquivo salvo no MinIO:', 'router' + '/' + bucketName + '-' + objectName);
-    console.log('')
+//     console.log('')
+//     console.log('ROUTER • Arquivo salvo no MinIO:', 'router' + '/' + bucketName + '-' + objectName);
+//     console.log('')
 
-    return objectName;
-  } catch (error) {
-    console.log('')
-    console.error('ROUTER • Erro ao salvar arquivo no MinIO:', error);
-    console.log('')
-  }
-}
+//     return objectName;
+//   } catch (error) {
+//     console.log('')
+//     console.error('ROUTER • Erro ao salvar arquivo no MinIO:', error);
+//     console.log('')
+//   }
+// }
 
 fastify.get('/', async function handler (request, reply) {
   return 'i4 Router API'
