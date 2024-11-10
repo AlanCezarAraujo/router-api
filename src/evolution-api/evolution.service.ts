@@ -6,7 +6,7 @@ export function setEvolutionPayload(numberId: string, entry: CloudEntry[], conta
     console.warn('No contacts or entry found [maybe On Premise account/request]')
   }
 
-  if (!contacts || !messages) {
+  if (!entry && (!contacts || !messages)) {
     console.warn('No contacts or messages found')
 
     return
