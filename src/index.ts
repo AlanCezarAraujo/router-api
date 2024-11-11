@@ -127,7 +127,7 @@ fastify.post<{ Params: { numberId: string } }>('/:numberId', async function hand
       message: {
         mediaType: 'imageMessage',
         media: 'https://s3.i4ai.com.br/evolution/evolution-api/682fec52-556b-432a-9654-9e90ccb245cc/5524998155174%40s.whatsapp.net/imageMessage/A64E179FEBE4E30EBB0FF920596F4638.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=1IS4rz3JGlBV0uuQYfAb%2F20241110%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20241110T233758Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=872dbed0f14e8ec922dedc65777d62d90a7f64333d9c2497ab6b3a6661fa106f', //url,
-        // imageMessage: 'https://s3.i4ai.com.br/evolution/evolution-api/682fec52-556b-432a-9654-9e90ccb245cc/5524998155174%40s.whatsapp.net/imageMessage/A64E179FEBE4E30EBB0FF920596F4638.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=1IS4rz3JGlBV0uuQYfAb%2F20241110%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20241110T233758Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=872dbed0f14e8ec922dedc65777d62d90a7f64333d9c2497ab6b3a6661fa106f', //url,
+        imageMessage: '', //url,
       },
       messageType: MessageTypeEnum.ImageMessage,
     });
